@@ -13,8 +13,9 @@ class Collection(models.Model):
 # django will create reverse relation so we can either create  reverse relation or we can define the name by giving int to the related_name and if we pass + in related name it will not create reverse relationship
 class Product(models.Model):
     title=models.CharField(max_length=255)
+    slug=models.SlugField(default='-') # use for the search engine optimization / a slug which we mainly see in the urls
     description=models.TextField()
-    price=models.DecimalField(max_digits=6,decimal_places=2)
+    unit_price=models.DecimalField(max_digits=6,decimal_places=2)
     inventory=models.ImageField()
     last_update=models.DateTimeField(auto_now=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
