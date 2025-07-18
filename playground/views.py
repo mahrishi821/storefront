@@ -34,7 +34,10 @@ def say_hello(request):
     #     print(i.title)
     # queryset = Product.objects.filter(collection_id__gt=20,unit_price__gt=200)
 
-    queryset=Product.objects.filter(Q(collection_id__gt=20) | Q(unit_price__gt=200)) #use for the or operator
+    queryset=Product.objects.filter(Q(collection_id__gt=20) | Q(unit_price__gt=200))
+
+
+    #use for the or operator
 
     return render(request,'hello.html',{'name':'rishi','products':list(queryset)})
 
